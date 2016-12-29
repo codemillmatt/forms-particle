@@ -8,6 +8,8 @@ using Xamarin.Forms;
 
 namespace Particle
 {
+	// all weather related functions via James Montemagno
+	// https://github.com/jamesmontemagno/MyWeather.Forms
 	public class WeatherViewModel : INotifyPropertyChanged
 	{
 		WeatherService WeatherService { get; } = new WeatherService();
@@ -37,7 +39,7 @@ namespace Particle
 		}
 
 
-		bool isImperial = false;//Settings.IsImperial;
+		bool isImperial = true;//Settings.IsImperial;
 		public bool IsImperial
 		{
 			get { return isImperial; }
@@ -48,7 +50,6 @@ namespace Particle
 				//Settings.IsImperial = value;
 			}
 		}
-
 
 
 		string temp = string.Empty;
@@ -110,7 +111,7 @@ namespace Particle
 				Forecast = await WeatherService.GetForecast(weatherRoot.CityId, units);
 
 				var unit = IsImperial ? "F" : "C";
-				Temp = $"Temp: {weatherRoot?.MainWeather?.Temperature ?? 0}°{unit}";
+				Temp = $"{weatherRoot?.MainWeather?.RoundedTemp ?? 0}";
 				Condition = weatherRoot?.Weather?[0]?.Description ?? string.Empty;
 
 			}

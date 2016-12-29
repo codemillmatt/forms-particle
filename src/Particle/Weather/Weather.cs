@@ -4,7 +4,8 @@ using Newtonsoft.Json;
 
 namespace Particle
 {
-
+	// all weather related functions via James Montemagno
+	// https://github.com/jamesmontemagno/MyWeather.Forms
 	public class Coord
 	{
 		[JsonProperty("lon")]
@@ -40,6 +41,13 @@ namespace Particle
 	{
 		[JsonProperty("temp")]
 		public double Temperature { get; set; } = 0;
+		public int RoundedTemp
+		{
+			get
+			{
+				return (int)Math.Round(Temperature, 0);
+			}
+		}
 		[JsonProperty("pressure")]
 		public double Pressure { get; set; } = 0;
 

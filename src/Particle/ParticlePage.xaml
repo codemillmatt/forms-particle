@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Particle" x:Class="Particle.ParticlePage">
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:local="clr-namespace:Particle" 
+		x:Class="Particle.ParticlePage">
+	<ContentPage.BindingContext>
+		<local:WeatherViewModel />
+	</ContentPage.BindingContext>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 		<local:SnowyBackgroundView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="2" />
-		<Label Text="20" FontSize="144" Grid.Row="0" HorizontalOptions="Center" TextColor="White" Margin="0,50,0,0" />
-		<Button Text="Get Current Conditions" Grid.Row="1" HorizontalOptions="Center" TextColor="#050E68" FontAttributes="Bold" />
+		<Label Text="{Binding Temp}" FontSize="144" Grid.Row="0" HorizontalOptions="Center" TextColor="White" Margin="0,50,0,0" />
+		<Button Text="Get Current Temperature" Command="{Binding GetWeatherCommand}" Grid.Row="1" HorizontalOptions="Center" TextColor="#050E68" FontAttributes="Bold" />
 	</Grid>
 </ContentPage>

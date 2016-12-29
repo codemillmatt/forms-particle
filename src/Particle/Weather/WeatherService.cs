@@ -5,6 +5,8 @@ using static Newtonsoft.Json.JsonConvert;
 
 namespace Particle
 {
+	// all weather related functions via James Montemagno
+	// https://github.com/jamesmontemagno/MyWeather.Forms
 	public enum Units
 	{
 		Imperial,
